@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<html>
+  
+<body style="background-color:rgb(135, 186, 212);">
+  <p>Prediction: <b>{{result.get("class")}}</b></p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Lesion type</th>
+      <th scope="col">Confidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for i in range(0, 7)%}
+    <tr>
+      <th scope="row">{{result.get("probs")[i][0]}}</th>
+      <td>{{result.get("probs")[i][1]}}</td>
+     
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+</body>
+ 
+<figure class="figure">
+  <img src="data:image/png;base64, {{result.get("image")}}" class="figure-img img-thumbnail input-image">
+</figure>
+   <h1>Recommendation for healthy life</h1>
+	<div style="background-color:silver;overflow-x: auto; padding:10px;border-radius:5px;margin:10px;">
+		<h3 style="text-align:justify;color:black;padding:10px">Precautions :</h3>
+		<ul>
+		<li style="text-align:justify;color:black;padding:10px">Apply sunscreen daily</li>
+		<li style="text-align:justify;color:black;padding:10px">Drink Plenty of water</li>
+		<li style="text-align:justify;color:black;padding:10px">Apply a non-irritating lip balm (or lip moisturizer) several times a day and before bed.</li>
+		<li style="text-align:justify;color:black;padding:10px">Wear protective clothing</li>
+		<li style="text-align:justify;color:black;padding:10px">Eat a healthy diet</li>
+    <li style="text-align:justify;color:black;padding:10px">Manage stress</li>
+		<ul>
+		<h3 style="text-align:justify;color:black;padding:10px">Recommendation :</h3>
+		<ul>
+		<li style="text-align:justify;color:black;padding:10px">Consult your doctor</li>
+		<li style="text-align:justify;color:black;padding:10px">Take your interferons</li>
+		<li style="text-align:justify;color:black;padding:10px">Go for checkups</li>
+		<ul>
+	</div>
+
+</html>
+
+{% endblock %}
